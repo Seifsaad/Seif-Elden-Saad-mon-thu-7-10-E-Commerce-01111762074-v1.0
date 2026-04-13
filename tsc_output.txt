@@ -1,0 +1,5 @@
+src/app/products/productDetails/[id]/page.tsx(14,11): error TS2339: Property 'data' does not exist on type 'Product | undefined'.
+src/next-auth/nextAuth.config.ts(41,53): error TS2339: Property 'tokenCredentials' does not exist on type 'User | AdapterUser'.
+  Property 'tokenCredentials' does not exist on type 'User'.
+src/next-auth/nextAuth.config.ts(48,13): error TS18048: 'params.session.user' is possibly 'undefined'.
+src/next-auth/nextAuth.config.ts(48,33): error TS2339: Property 'id' does not exist on type '{ name?: string | null | undefined; email?: string | null | undefined; image?: string | null | undefined; }'.

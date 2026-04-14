@@ -4,9 +4,14 @@ import { cookies } from "next/headers";
 
 export async function decodeUserToken(): Promise<string | null> {
     const cookie = await cookies();
-    const nextAuthToken = cookie.get('next-auth.session-token')?.value;
+    
+    // In production (HTTPS), NextAuth uses __Secure- prefix
+    const nextAuthToken = cookie.get('__Secure-next-auth.session-token')?.value || 
+                         cookie.get('next-auth.session-token')?.value;
 
-    const jwtRes =await decode({ secret:process.env.NEXTAUTH_SECRET! ,token:nextAuthToken})
+    if (!nextAuthToken) return null;
+
+    const jwtRes = await decode({ secret: process.env.NEXTAUTH_SECRET!, token: nextAuthToken })
     
     if(jwtRes){
         return jwtRes.routeToken as string

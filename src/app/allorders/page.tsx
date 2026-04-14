@@ -1,4 +1,5 @@
 import { getMyOrders } from '_/Api/route.services'
+import { Order } from '_/Api/types.services';
 import Link from 'next/link';
 import React from 'react'
 import { FaBoxOpen } from "react-icons/fa6";
@@ -26,9 +27,9 @@ export default async function allorders() {
                     </div>
                 </div>
                 <div className='flex flex-col gap-2'>
-                    {/* {myOrders?.map((order: any) => (
-                        <OrderCard key={order._id} myOrders={order} />
-                    ))} */}
+                    {myOrders?.map((order: Order) => (
+                        <OrderCard key={order._id} order={order} />
+                    ))}
                 </div>
             </div>
         </div>

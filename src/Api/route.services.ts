@@ -1,12 +1,13 @@
 import { decodeUserToken } from "_/app/utils";
 import { CartResponse, Category, Product, WishlistResponse } from "./types.services";
+import { jwtDecode } from "jwt-decode";
 
 export async function getAllProducts(): Promise<Product[] | undefined> {
 
   try {
     const res = await fetch(`https://ecommerce.routemisr.com/api/v1/products`);
     const result = await res.json()
-
+    console.log('result from getAllProducts', result);
     return result.data
 
   }
@@ -70,18 +71,14 @@ export async function getCart(): Promise<CartResponse | undefined> {
 
 export async function getMyOrders() {
 
-  const userToken: any = await decodeUserToken()
-  // console.log('userToken from getMyOrders', userToken);
-  const userId = userToken?.userRouteId
-
-  // console.log('userId from getMyOrders', userId);
-
-
+  const userToken = await decodeUserToken()
   if (userToken) {
     try {
+      const decoded = jwtDecode(userToken) as { id: string };
+      const userId = decoded.id;
       const res = await fetch(`https://ecommerce.routemisr.com/api/v1/orders/user/${userId}`)
       const data = await res.json()
-      // console.log('data from getMyOrders', data);
+      console.log('data from getMyOrders', data);
       return data;
     } catch (error) {
       console.log('error from getMyOrders', error);

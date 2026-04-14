@@ -8,7 +8,6 @@ import Infobar from "./_Component/Navbar/Infobar";
 import { Toaster } from "_/components/ui/sonner"
 import SessionProviderWrapper from "./_Component/SessionProviderWrapper/SessionProviderWrapper";
 import CartContextProvider from "./_Context/CartContext";
-import { useContext } from "react";
 import { getCart, getWishlist } from "_/Api/route.services";
 import WishlistContextProvider from "./_Context/WishlistContext";
 // const geistSans = Geist({
@@ -41,6 +40,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
+        suppressHydrationWarning
         className={`   antialiased`}
       >
         <WishlistContextProvider wres={wres}>

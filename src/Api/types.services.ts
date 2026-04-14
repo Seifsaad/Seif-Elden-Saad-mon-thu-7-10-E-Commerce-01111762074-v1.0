@@ -46,3 +46,36 @@ export interface WishlistResponse {
 count:number;
 data:Product[];
 }
+
+export interface Order {
+  _id: string;
+  id: number;
+  user: {
+    _id: string;
+    name: string;
+    email: string;
+    phone: string;
+  };
+  cartItems: OrderItem[];
+  totalOrderPrice: number;
+  paymentMethodType: string;
+  isPaid: boolean;
+  isDelivered: boolean;
+  shippingAddress: ShippingAddress;
+  shippingPrice: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface OrderItem {
+  count: number;
+  _id: string;
+  product: Product;
+  price: number;
+}
+
+export interface ShippingAddress {
+  details: string;
+  phone: string;
+  city: string;
+}

@@ -6,12 +6,12 @@ import { FaChevronDown, FaChevronUp, FaCreditCard, FaMoneyBill1Wave, FaReceipt }
 import { LuPackage } from "react-icons/lu";
 import { CiLocationOn } from "react-icons/ci";
 import Image from "next/image";
+import { Order, OrderItem } from "_/Api/types.services";
 
 
-export default function OrderCard({ myOrders }: any) {
+export default function OrderCard({ order }: { order: Order }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const order = myOrders || {};
   const cartItems = order?.cartItems || [];
   const firstItem = cartItems[0];
   const itemsCount = cartItems.length;
@@ -84,7 +84,7 @@ export default function OrderCard({ myOrders }: any) {
 
         <div className="flex sm:flex-col items-end justify-between sm:justify-start gap-4 h-full">
           <button className="hidden sm:flex w-10 h-10 rounded-lg bg-gray-50 hover:bg-gray-100 items-center justify-center text-gray-500 transition-colors">
-            {myOrders.paymentMethodType === "cash" ? <FaMoneyBill1Wave className="text-sm" /> : <FaCreditCard className="text-sm" />}
+            {order.paymentMethodType === "cash" ? <FaMoneyBill1Wave className="text-sm" /> : <FaCreditCard className="text-sm" />}
           </button>
 
           <CollapsibleTrigger asChild>
@@ -112,7 +112,7 @@ export default function OrderCard({ myOrders }: any) {
           </div>
 
           <div className="flex flex-col gap-4">
-            {cartItems.map((item: any, index: number) => (
+            {cartItems.map((item: OrderItem, index: number) => (
               <div key={item._id || index} className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 group">
                 <div className="flex items-center gap-3">
                   <div className="border border-gray-100 bg-gray-50 p-2 rounded-lg w-16 h-16 flex items-center justify-center shrink-0">

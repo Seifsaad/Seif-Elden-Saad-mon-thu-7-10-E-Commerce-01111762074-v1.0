@@ -172,10 +172,9 @@ export default function CheckoutForm({ products, totalCartPrice }: CheckoutFormP
               </h2>
             </div>
             <div className="bg-surface-container-lowest p-8 border border-outline-variant/15 rounded-b-xl shadow-sm space-y-4">
-              <label 
-                className={`flex items-center justify-between p-5 border rounded-xl cursor-pointer transition-all ${
-                  paymentMethod === "cash" ? "border-primary bg-primary-container/10" : "border-outline-variant/20"
-                }`}
+              <label
+                className={`flex items-center justify-between p-5 border rounded-xl cursor-pointer transition-all ${paymentMethod === "cash" ? "border-primary bg-primary-container/10" : "border-outline-variant/20"
+                  }`}
                 onClick={() => setPaymentMethod("cash")}
               >
                 <div className="flex items-center gap-4">
@@ -191,10 +190,9 @@ export default function CheckoutForm({ products, totalCartPrice }: CheckoutFormP
                   </div>
                 </div>
               </label>
-              <label 
-                className={`flex items-center justify-between p-5 border rounded-xl cursor-pointer transition-all ${
-                  paymentMethod === "online" ? "border-primary bg-primary-container/10" : "border-outline-variant/20"
-                }`}
+              <label
+                className={`flex items-center justify-between p-5 border rounded-xl cursor-pointer transition-all ${paymentMethod === "online" ? "border-primary bg-primary-container/10" : "border-outline-variant/20"
+                  }`}
                 onClick={() => setPaymentMethod("online")}
               >
                 <div className="flex items-center gap-4">
@@ -270,11 +268,10 @@ export default function CheckoutForm({ products, totalCartPrice }: CheckoutFormP
               type="submit"
               form="checkout-form"
               disabled={isSubmitting}
-              className={`w-full py-4 rounded-xl font-bold text-white transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 ${
-                isSubmitting 
-                ? "bg-gray-400 cursor-not-allowed" 
-                : "bg-linear-to-l from-green-800 to-green-600 hover:from-green-700 hover:to-green-500 cursor-pointer"
-              }`}
+              className={`w-full py-4 rounded-xl font-bold text-white transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 ${isSubmitting
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-linear-to-l from-green-800 to-green-600 hover:from-green-700 hover:to-green-500 cursor-pointer"
+                }`}
             >
               {isSubmitting ? (
                 <span className="animate-pulse">Processing...</span>

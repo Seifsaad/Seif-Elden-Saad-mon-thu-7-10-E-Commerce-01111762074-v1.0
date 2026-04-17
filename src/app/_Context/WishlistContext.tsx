@@ -23,7 +23,10 @@ export default function WishlistContextProvider({ children, wres }: { children: 
         return wres?.data?.map(p => p.id) || []
     });
 
-    useEffect(() => {
+    const [prevWres, setPrevWres] = useState(wres);
+
+    if (wres !== prevWres) {
+        setPrevWres(wres);
         if (wres !== undefined) {
             setWishlistProductsCount(wres.count)
             setWishlistIds(wres.data.map(p => p.id))
@@ -31,7 +34,7 @@ export default function WishlistContextProvider({ children, wres }: { children: 
             setWishlistProductsCount(0)
             setWishlistIds([])
         }
-    }, [wres]);
+    }
 
     function updateNumOfWishlistUi(num: number, ids?: string[]) {
         setWishlistProductsCount(num)

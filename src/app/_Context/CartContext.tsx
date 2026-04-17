@@ -18,13 +18,16 @@ export default function CartContextProvider({ children, res }: { children: React
         return res === undefined ? 0 : res.products.length
     });
 
-    useEffect(() => {
+    const [prevRes, setPrevRes] = useState(res);
+
+    if (res !== prevRes) {
+        setPrevRes(res);
         if (res !== undefined) {
             setCartProductsCount(res.products.length)
         } else {
             setCartProductsCount(0)
         }
-    }, [res]);
+    }
 
     function updateNumOfCartUi(num: number) {
         setCartProductsCount(num)
